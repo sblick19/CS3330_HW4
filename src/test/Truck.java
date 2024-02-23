@@ -8,4 +8,20 @@ public class Truck extends Vehicle{
 		// TODO Auto-generated constructor stub
 	}
 
+	public double calculateMaintenanceCost(double distance) {
+        // Implementation specific to calculating maintenance cost for a truck
+        return (distance * mass * (2024 - modelYear)* cylinders * 0.002);
+    }
+
+
+    public double calculateFuelEfficiency(double distance, double fuelPrice) {
+        // Implementation specific to calculating fuel efficiency for a truck
+        return (cylinders * gasTankCapacity * fuelPrice / distance * 0.1);
+    }
+
+    
+    public void startEngine() {
+    	// prints how the vehicle starts
+        System.out.println("startType=" + startType);
+    }
 }
