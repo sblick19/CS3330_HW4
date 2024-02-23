@@ -160,4 +160,12 @@ public abstract class Vehicle {
                 ", startType=" + startType +
                 '}';
     }
+ // Abstract method to calculate maintenance cost for a specific vehicle
+    public abstract double calculateMaintenanceCost(double distance);
+
+    // Abstract method to calculate the engine efficiency
+    public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
+
+    // Abstract method to print how the vehicle starts
+    public abstract void startEngine();
 }
