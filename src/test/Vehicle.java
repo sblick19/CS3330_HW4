@@ -144,4 +144,20 @@ public abstract class Vehicle {
     public void setStartType(StartMechanism startType) {
         this.startType = startType;
     }
+    
+    public String toString() {
+        return "Vehicle{" +
+                "brand='" + brand + '\'' +
+                ", make='" + make + '\'' +
+                ", modelYear=" + modelYear +
+                ", price=" + price +
+                ", color=" + color +
+                ", fuelType=" + fuelType +
+                ", mileage=" + mileage +
+                ", mass=" + mass +
+                ", cylinders=" + cylinders +
+                ", gasTankCapacity=" + gasTankCapacity +
+                ", startType=" + startType +
+                '}';
+    }
 }
