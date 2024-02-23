@@ -22,6 +22,7 @@ public class Truck extends Vehicle{
     
     public void startEngine() {
     	// prints how the vehicle starts
+    	//System.out.println("Start Mechanism: KEYSTART"); ALTERNATIVE OPTION
         System.out.println("startType=" + startType);
     }
 }
