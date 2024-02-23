@@ -42,6 +42,21 @@ public abstract class Vehicle {
     	this.gasTankCapacity = gasTankCapacity;
     	this.startType = startType;
 }
+ // Copy Constructor
+    public Vehicle(Vehicle otherVehicle) {
+        this.brand = otherVehicle.brand;
+        this.make = otherVehicle.make;
+        this.modelYear = otherVehicle.modelYear;
+        this.price = otherVehicle.price;
+        this.color = otherVehicle.color;
+        this.fuelType = otherVehicle.fuelType;
+        this.mileage = otherVehicle.mileage;
+        this.mass = otherVehicle.mass;
+        this.cylinders = otherVehicle.cylinders;
+        this.gasTankCapacity = otherVehicle.gasTankCapacity;
+        this.startType = otherVehicle.startType;
+    }
+    
     public String getBrand() {
         return brand;
     }
