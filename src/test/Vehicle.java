@@ -3,7 +3,7 @@ package test;
 public abstract class Vehicle {
 	
 	enum VehicleColor{
-		RED, BLUE, GREEN, WHITE, BLACK
+		BLACK, RED, BLUE, BROWN, WHITE, YELLOW, GRAY
 	}
 	
 	enum FuelType{
@@ -11,7 +11,7 @@ public abstract class Vehicle {
 	}
 	
 	enum StartMechanism{
-		KEY, PUSH_BUTTON, REMOTE
+		KEYSTART, PUSHSTART, KICKSTART
 	}
 	
 	protected String brand;
