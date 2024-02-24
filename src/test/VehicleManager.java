@@ -1,16 +1,79 @@
 package test;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import test.Vehicle.FuelType;
+import test.Vehicle.StartMechanism;
+import test.Vehicle.VehicleColor;
 
 public class VehicleManager {
-	
-	private final static String vehicleFilePath;
-	private ArrayList<Vehicle> vehicleList = new ArrayList <Vehicle>();
-	
+	private static VehicleManager instance = null;
 	private final static double distance = 300;
 	private final static double fuelPrice = 3.25;
+	private final String vehicleFilePath;
+	private ArrayList<Vehicle> vehicleList;
 	
+	private VehicleManager() {
+		vehicleList = new ArrayList<Vehicle>();
+		vehicleFilePath = "/path/to/vehicle/file.csv"; // Replace with the actual file path
+		initializeStock();
+	}
+
+	public static synchronized VehicleManager getInstance() {
+		if (instance == null) {
+			instance = new VehicleManager();
+		}
+		return instance;
+	}
+
 	public boolean initializeStock() {
-		
+ try (BufferedReader reader = new BufferedReader(new FileReader(vehicleFilePath))) {
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            String[] parts = line.split(",");
+	            if (parts.length == 13) { // Assuming CSV format: title,price,year,genre
+					String brand = parts[0];
+					String make = parts[1];
+					long modelYear = Long.parseLong(parts[2]);
+					double price = Double.parseDouble(parts[3]);
+					VehicleColor color = VehicleColor.valueOf(parts[4]);
+					FuelType fuelType = FuelType.valueOf(parts[5]);
+					double mileage = Double.parseDouble(parts[6]);
+					double mass = Double.parseDouble(parts[7]);
+					int cylinders = Integer.parseInt(parts[8]);
+					double gasTankCapacity = Double.parseDouble(parts[9]);
+					StartMechanism startType = StartMechanism.valueOf(parts[10]);
+
+					// Create a new vehicle object
+					Vehicle vehicle;
+					if (parts[11].equals("Car")) {
+						vehicle = new Car(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+					} else if (parts[11].equals("Truck")) {
+						vehicle = new Truck(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+					} else if (parts[11].equals("SUV")) {
+						vehicle = new SUV(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+					} else if (parts[11].equals("MotorBike")) {
+						vehicle = new MotorBike(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
+					} else {
+						// Handle the case when the vehicle type is unknown
+						System.out.println("Unknown vehicle type: " + parts[11]);
+						return false;
+					}
+
+					// Add the vehicle to the vehicleList
+					vehicleList.add(vehicle);
+
+					return true;
+	            }
+	        }
+	        // Return true if vehicle is not empty
+			return !vehicleList.isEmpty();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false; // Return false if an exception occurs (file not found, etc.)
+	    }
 	}
 	
 	public void displayAllCarInformation() {
