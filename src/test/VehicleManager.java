@@ -207,6 +207,20 @@ public class VehicleManager {
 	}
 	
 	public void displayAllVehicleInformation() {
+		//Check if list is empty
+		if(this.vehicleList.size() == 0) {
+			System.out.println("Vehicle List is empty!");
+			return;
+		}
+		
+		//Print info for all vehicles in the list
+		for(Vehicle v : vehicleList) {
+			System.out.println(v.getModelYear() + " " + v.getBrand() + " " + v.getMake() + ": "
+					+ "\nMatenence Cost: " + v.calculateMaintenanceCost(distance) 
+					+ ", \nFuel Efficency: " + v.calculateFuelEfficiency(distance, fuelPrice)
+					+ ", ");
+			v.startEngine();
+		}
 		
 	}
 	
