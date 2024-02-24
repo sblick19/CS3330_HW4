@@ -1,4 +1,5 @@
 package test;
+import java.util.ArrayList;
 
 public class VehicleManager {
 	
@@ -6,7 +7,7 @@ public class VehicleManager {
 	private ArrayList<Vehicle> vehicleList = new ArrayList <Vehicle>();
 	
 	public boolean initializeStock() {
-
+		
 	}
 	
 	public void displayAllCarInformation() {
@@ -34,7 +35,7 @@ public class VehicleManager {
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle) {
-		
+		return false;
 	}
 	
 	public boolean addVehicle(Vehicle vehicle) {
