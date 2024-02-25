@@ -225,42 +225,87 @@ public class VehicleManager {
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle) {
-		return false;
+		//remove vehicle from list
+		if(vehicleList.remove(vehicle)) {
+			return true;
+		}else {
+			return false;
+		}
+
 	}
 	
 	public boolean addVehicle(Vehicle vehicle) {
+		//add vehicle to list
+		if(vehicleList.add(vehicle)) {
+			return true;
+		}else {
+			return false;
+		}
+
 		
 	}
 	
 	public boolean saveVehicleList() {
-		
+
+
 	}
 	
-	private boolean isVehicleType(Vehicle v, Class clazz) {
+	private boolean isVehicleType(Class<?> clazz) {
+		//check if list is empty
+		if(this.vehicleList.size() == 0) {
+			System.out.println("Vehicle List is empty!");
+			return false;
+		}
 		
+		//check if the vehicle type is in the list
+		for(Vehicle v : vehicleList) {
+			if(clazz.isInstance(v)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	public int getNumberOfVehichlesByType(Class clazz) {
+	public int getNumberOfVehiclesByType(Class<?> clazz) {
+		//check if list is empty
+		if(this.vehicleList.size() == 0) {
+			System.out.println("Vehicle List is empty!");
+			return 0;
+		}
+		
+		//count the number of vehicles of the type
+		int count = 0;
+		for(Vehicle v : vehicleList) {
+			if(isVehicleType(clazz)) {
+				count++;
+			}
+		}
+		return count;
 		
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
+
 		
 	}
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
+
 		
 	}
 	
 	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice){
+
 		
 	}
 	
 	public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice){
+
 		
 	}
 	
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+
 		
 	}
 
