@@ -190,12 +190,12 @@ public class VehicleManager {
 		//Find the correct vehicle in the list and print the info
 		int vehicleFound = 0;
 		for(Vehicle tv : vehicleList) {
-			if(v == tv) {
-				System.out.println(v.getModelYear() + " " + v.getBrand() + " " + v.getMake() + ": "
-						+ "\nMatenence Cost: " + v.calculateMaintenanceCost(distance) 
-						+ ", \nFuel Efficency: " + v.calculateFuelEfficiency(distance, fuelPrice)
+			if(tv == v) {
+				System.out.println(tv.getModelYear() + " " + tv.getBrand() + " " + tv.getMake() + ": "
+						+ "\nMatenence Cost: " + tv.calculateMaintenanceCost(distance) 
+						+ ", \nFuel Efficency: " + tv.calculateFuelEfficiency(distance, fuelPrice)
 						+ ", ");
-				v.startEngine();
+				tv.startEngine();
 				vehicleFound = 1;
 			}
 		}
@@ -213,7 +213,11 @@ public class VehicleManager {
 			return;
 		}
 		
+<<<<<<< HEAD
 		//Print info for all vehicles in the list
+=======
+		//print all vehicle data
+>>>>>>> d077c9b7aa16125bc71da54ad6ac825b0b44ed22
 		for(Vehicle v : vehicleList) {
 			System.out.println(v.getModelYear() + " " + v.getBrand() + " " + v.getMake() + ": "
 					+ "\nMatenence Cost: " + v.calculateMaintenanceCost(distance) 
