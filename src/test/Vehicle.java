@@ -1,5 +1,7 @@
 package test;
 
+import java.util.ArrayList;
+
 public abstract class Vehicle {
 	
 	enum VehicleColor{
@@ -7,12 +9,22 @@ public abstract class Vehicle {
 	}
 	
 	enum FuelType{
-		GASOLINE, DIESEL, ELECTRIC, HYBRID
+		GASOLINE, DIESEL, ELECTRIC, HYBRID;
+
+        public static void main(String[] args) {
+          // Create vehicles
+        
+          ArrayList<Vehicle> efficientVehicles = VehicleManager.getVehicleWithHighestFuelEfficiency(vehicles, 100, 2.5);
+        
+          System.out.println(efficientVehicles.get(0).name);
+        }
 	}
 	
 	enum StartMechanism{
 		KEYSTART, PUSHSTART, KICKSTART
 	}
+
+    public static char[] name;
 	
 	protected String brand;
     protected String make;

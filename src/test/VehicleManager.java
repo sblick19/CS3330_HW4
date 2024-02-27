@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import test.Vehicle.FuelType;
 import test.Vehicle.StartMechanism;
 import test.Vehicle.VehicleColor;
@@ -213,11 +215,8 @@ public class VehicleManager {
 			return;
 		}
 		
-<<<<<<< HEAD
 		//Print info for all vehicles in the list
-=======
 		//print all vehicle data
->>>>>>> d077c9b7aa16125bc71da54ad6ac825b0b44ed22
 		for(Vehicle v : vehicleList) {
 			System.out.println(v.getModelYear() + " " + v.getBrand() + " " + v.getMake() + ": "
 					+ "\nMatenence Cost: " + v.calculateMaintenanceCost(distance) 
@@ -250,6 +249,7 @@ public class VehicleManager {
 	}
 	
 	public boolean saveVehicleList() {
+		return false;
 
 
 	}
@@ -289,28 +289,211 @@ public class VehicleManager {
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
+        //check to see if list is empty
+        if(this.vehicleList.size() == 0) {
+			System.out.println("Vehicle List is empty!");
+		}
+        //
+        class Vehicle {
+            String name;
+            double maintenanceCostPerMile;
+          
+            Vehicle(String name, double maintenanceCostPerMile) {
+              this.name = name; 
+              this.maintenanceCostPerMile = maintenanceCostPerMile;
+            }
+          
+            double calculateMaintenanceCost(double miles) {
+              return maintenanceCostPerMile * miles; 
+            }
+          }
+        }
+        public class Main {
+  public static Vehicle getVehicleWithHighestMaintenanceCost(List<Vehicle> vehicles, double miles) {
+    Vehicle maxVehicle = null;
+    double maxCost = 0;
 
-		
-	}
-	
+    for (Vehicle v : vehicles) {
+      double cost = v.calculateMaintenanceCost(miles);
+      
+      if (maxVehicle == null || cost > maxCost) {
+        maxVehicle = v;
+        maxCost = cost;
+      }
+    }
+
+    return maxVehicle;
+  }
+  public static void main(String[] args) {
+    final Vehicle car = new Vehicle("Car", 0.1);
+    Vehicle truck = new Vehicle("Truck", 0.2);
+    Vehicle SUV = new Vehicle("SUV", 0.5);
+    Vehicle MotorBike = new Vehicle("MotorBike", 0.3);
+  
+    List<Vehicle> vehicles = List.of(car, truck, SUV, MotorBike);
+
+    Vehicle highestCostVehicle = getVehicleWithHighestMaintenanceCost(vehicles, 100);
+    System.out.println(highestCostVehicle.name); 
+  }
+}
+
+
+        
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
+        //Check if list is empty
+		if(this.vehicleList.size() == 0) {
+			System.out.println("Vehicle List is empty!");
+	
+		}
 
-		
-	}
+    public static Vehicle getVehicleWithLowestMaintenanceCost(List<Vehicle> vehicles, double miles) {
+          
+        Vehicle minVehicle = null;
+        Double minCost = Double.MAX_VALUE;
+          
+        for (Vehicle v : vehicles) {
+        double cost = v.calculateMaintenanceCost(miles);
+          
+        if (cost < minCost) {
+            minVehicle = v;
+            minCost = cost; 
+        }
+        }
+          
+        return minVehicle;
+    }
+
+    public class main {
+
+    public static void main(String[] args) {
+              
+        Vehicle lowestCostVehicle = getVehicleWithLowestMaintenanceCost(vehicles, 100);
+          
+        System.out.println(lowestCostVehicle.name);
+         }
+}
 	
 	public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice){
-
-		
+    //check to see if list is empty
+        if(this.vehicleList.size() ==0) {
+            Object system;
+			system.ouitt.println("Vehicle List is empty!");
+            return 0;
+        }
+        class Vehicle {
+            String name;
+            double milesPerGallon;
+          
+            Vehicle(String name, double milesPerGallon) {
+              this.name = name;
+              this.milesPerGallon = milesPerGallon;
+            }
+          
+            double calculateFuelCost(double distance, double fuelPrice) {
+              double gallons = distance / milesPerGallon;
+              return gallons * fuelPrice;
+            }
+          }
+          
+            public static ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(List<Vehicle> vehicles, double distance, double fuelPrice) {
+              Vehicle mostEfficient = null;
+              double minFuelCost = Double.MAX_VALUE;
+          
+              for (Vehicle v : vehicles) {
+                double fuelCost = v.calculateFuelEfficiency(distance, fuelPrice);
+                if (fuelCost < minFuelCost) {
+                  mostEfficient = v;
+                  minFuelCost = fuelCost;
+                }
+              }
+          
+              ArrayList<Vehicle> result = new ArrayList<>();
+              result.add(mostEfficient);
+              return result;
+            }
+          
+            public int getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice){
+        //check to see if list is empty
+        if(this.vehicleList.size() ==0) {
+            Object system;
+			system.out.println("Vehicle List is empty!");
+            return 0;
+        }
+        public static ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(List<Vehicle> vehicles, double distance, double fuelPrice) {
+    
+            Vehicle leastEfficient = null;
+            double maxFuelCost = 0;
+        
+            for (Vehicle v : vehicles) {
+            
+              double fuelCost = v.calculateFuelEfficiency(distance, fuelPrice);
+              
+              if (fuelCost > maxFuelCost) {
+                leastEfficient = v;
+                maxFuelCost = fuelCost;
+              }
+            }
+        
+            ArrayList<Vehicle> result = new ArrayList<>();
+            result.add(leastEfficient);
+            return result;
+          }
+        
+          public static void main(String[] args) {
+        
+            ArrayList<Vehicle> inefficientVehicles = getVehicleWithLowestFuelEfficiency(vehicles, 100, 2.5); 
+        
+            System.out.println(inefficientVehicles.get(0).name);
+          }
+        }
 	}
 	
-	public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice){
-
+	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) 
+    {
+        //check to see if list is empty
+        if(this.vehicleList.size() ==0) {
+            system.out.println("Vehicle List is empty!");
+            return 0;
+        }
 		
-	}
-	
-	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+public class Main {
 
-		
-	}
+  public static double getAverageFuelEfficiencyOfSUVs(List<Vehicle> vehicles, double distance, double fuelPrice) {
+    
+    double totalEfficiency = 0; 
+    int numSUVs = 0;
+
+    for (Vehicle v : vehicles) {
+      if (isVehicleType(v, SUV.class)) {
+        double fuelCost = v.calculateFuelCost(distance, fuelPrice);
+        totalEfficiency += 1/fuelCost; 
+        numSUVs++;
+      }
+    }
+
+    if (numSUVs == 0) {
+      return -1.0;
+    }
+
+    return totalEfficiency / numSUVs;
+  }
+
+  public static boolean isVehicleType(Vehicle v, Class clazz) {
+    return clazz.isInstance(v); 
+  }
+
+  public static void main(String[] args) {
+    
+    List<Vehicle> vehicles = loadVehicles();
+
+    double avgSUVEfficiency = getAverageFuelEfficiencyOfSUVs(vehicles, 100, 2.5);
+
+    if (avgSUVEfficiency == -1.0) {
+      System.out.println("No SUVs");
+    } else {
+      System.out.println("Average SUV Efficiency: " + avgSUVEfficiency);
+    }
+
+  }
 
 }
